@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Mail" default="build" basedir=".">
+  <property name="src"   location="src"/>
+  <property name="test"  location="test"/>
+  <property name="dist"  location="dist"/>
+  <property name="build" location="build/classes"/>
+  <property name="lib"   location="lib"/> 
+  <property name="webct" location="WebContent"/> 
+  
+  <path id="compile.classpath">
+    <fileset dir="${lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+    <fileset dir="WebContent/WEB-INF/lib/">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+  
+  <!-- Generate the WAR -->
+  <target name="build" depends="junit">
+    <delete dir="${dist}"/>
+    <mkdir dir="${dist}"/>
+    <!--  Build the JAR file, which contains everything except the servlet and JSPs 
+          We're going to use this in our web app, but it's client-agnostic, so lets
+          build it separately-->
+    <jar destfile="${dist}/mail-config.jar">
+      <fileset dir="${build}"
+               excludes="**/test/,**/servlet/**"/>
+    </jar>
+    <!-- now build the WAR file -->
+    <war destfile="${dist}/mail-server.war" webxml="${webct}/WEB-INF/web.xml">
+    </war>
+  </target>
+  
+  
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${build}"/>
+  </target>
+  
+  
+  <!-- Compile the src and test classes -->
+  <target name="compile" depends="init">
+  	<delete dir="${build}"/>
+  	<mkdir dir="${build}"/>
+    <javac destdir="${build}"
+           includeJavaRuntime="no"
+           includeAntRuntime="no"
+    	   debug="yes">
+      <classpath refid="compile.classpath"/>
+      <src path="${src}"/>
+      <src path="${test}"/>
+    </javac>
+    <copy todir="${build}">
+      <fileset dir="${src}" includes="**/*.xml,**/*.properties"/>
+    </copy>
+  </target>
+  
+  <!-- Execute the unit tests -->
+  <target name="junit" depends="compile">
+    <junit printsummary="yes" haltonerror="yes" haltonfailure="yes">       
+      <formatter type="plain" usefile="false"/>
+      <classpath>
+        <pathelement location="${build}"/>
+        <path refid="compile.classpath"/>
+      </classpath>
+      <batchtest fork="yes">
+        <fileset dir="${test}"/>
+      </batchtest>
+    </junit>
+  </target>
+  
+</project>

@@ -45,3 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.class
+build/classes/com/mkwillis/mailserver/server/mailManagerConfig.properties
+build/classes/com/mkwillis/mailserver/server/smtp/smtpserver.properties
