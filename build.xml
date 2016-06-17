@@ -1,37 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Mail" default="build" basedir=".">
+<project name="Mail" default="junit" basedir=".">
   <property name="src"   location="src"/>
   <property name="test"  location="test"/>
-  <property name="dist"  location="dist"/>
   <property name="build" location="build/classes"/>
   <property name="lib"   location="lib"/> 
   <property name="webct" location="WebContent"/> 
   
+	<!-- compilation classpath -->
   <path id="compile.classpath">
     <fileset dir="${lib}">
       <include name="**/*.jar"/>
     </fileset>
-    <fileset dir="WebContent/WEB-INF/lib/">
+    <fileset dir="${webct}/WEB-INF/lib/">
       <include name="*.jar"/>
     </fileset>
-  </path>
-  
-  <!-- Generate the WAR -->
-  <target name="build" depends="junit">
-    <delete dir="${dist}"/>
-    <mkdir dir="${dist}"/>
-    <!--  Build the JAR file, which contains everything except the servlet and JSPs 
-          We're going to use this in our web app, but it's client-agnostic, so lets
-          build it separately-->
-    <jar destfile="${dist}/mail-config.jar">
-      <fileset dir="${build}"
-               excludes="**/test/,**/servlet/**"/>
-    </jar>
-    <!-- now build the WAR file -->
-    <war destfile="${dist}/mail-server.war" webxml="${webct}/WEB-INF/web.xml">
-    </war>
-  </target>
-  
+  </path> 
   
   <target name="init">
     <tstamp/>
