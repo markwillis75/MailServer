@@ -36,33 +36,9 @@ public class MailService implements IMailHandler{
 	 * @see IMailHandler#sendMail(IEmail)
 	 */
 	public SendResult sendMail(IEmail email){
-		
-		// Check to see if the mail passes validation
-		// If not, save time by aborting the attempt
-		MailValidation validation = MailValidator.validate(email);
-		
-		if (!validation.isValid()){
-			return new SendResult(false, readMessages(validation.getMessages()));
-		}
-		
-		// Looks like we have a valid email.  Try to send it
 		return _delegate.sendMail(email);
 	}
-	
-	/**
-	 * Read messages from Iterator and return them as a List of Strings
-	 * @param iter
-	 * @return
-	 */
-	private List<String> readMessages(Iterator<String> iter){
-		List<String> msgs = new ArrayList<>();
-		while(iter.hasNext()){
-			msgs.add(iter.next());
-		}
 		
-		return msgs;
-	}
-	
 	/**
 	 * @see IMailHandler#configure(Object)
 	 */

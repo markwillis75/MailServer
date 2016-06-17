@@ -78,8 +78,7 @@ public class MailServlet extends HttpServlet {
 	private SendResult sendEmail(HttpServletRequest request) throws ServletException, IOException{
 		IEmail myEmail = createEmail(request);
 		
-		IMailHandler handler = MailManager.getInstance().getMailHandler();
-		return handler.sendMail(myEmail);
+		return MailManager.getInstance().sendMail(myEmail);
 	}
 	
 	/**

@@ -1,6 +1,12 @@
 package com.mkwillis.mailserver.server;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
+
+import com.mkwillis.mailserver.beans.IEmail;
+import com.mkwillis.mailserver.beans.SendResult;
 
 /**
  * Encapsulation of the functionality necessary to respond to mail requests.
@@ -44,12 +50,21 @@ public final class MailManager {
 	}
 	
 	/**
-	 * Allow clients to access the IMailHandler so that they can invoke the
-	 * {@link IMailHandler#sendMail(IEmail)} method
-	 * @return
+	 * Attempt to send the IEmail instance
+	 * @param mail IEmail to transmit
+	 * @return SendResult object containing success/error flag and associated messages
 	 */
-	public IMailHandler getMailHandler(){
-		return _handler;
+	public SendResult sendMail(IEmail mail){
+		// Check to see if the mail passes validation
+		// If not, save time by aborting the attempt
+		MailValidation validation = MailValidator.validate(mail);
+		
+		if (!validation.isValid()){
+			return new SendResult(false, readMessages(validation.getMessages()));
+		}
+				
+		// Looks like we have a valid email.  Try to send it
+		return _handler.sendMail(mail);
 	}
 	
 	/**
@@ -83,5 +98,19 @@ public final class MailManager {
 		}
 		
 		return runtimeHandler;
+	}
+	
+	/**
+	 * Read messages from Iterator and return them as a List of Strings
+	 * @param iter
+	 * @return
+	 */
+	private List<String> readMessages(Iterator<String> iter){
+		List<String> msgs = new ArrayList<>();
+		while(iter.hasNext()){
+			msgs.add(iter.next());
+		}
+		
+		return msgs;
 	}
 }
