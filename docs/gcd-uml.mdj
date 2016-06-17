@@ -13324,97 +13324,6 @@
 					]
 				},
 				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAFVT5+9j00U7p8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "AttachmentProxy",
-					"ownedElements": [
-						{
-							"_type": "UMLInterfaceRealization",
-							"_id": "AAAAAAFVT5//p00+XTk=",
-							"_parent": {
-								"$ref": "AAAAAAFVT5+9j00U7p8="
-							},
-							"source": {
-								"$ref": "AAAAAAFVT5+9j00U7p8="
-							},
-							"target": {
-								"$ref": "AAAAAAFVT5vdNUyGEGU="
-							},
-							"visibility": "public"
-						}
-					],
-					"visibility": "public",
-					"isAbstract": false,
-					"isFinalSpecialization": false,
-					"isLeaf": false,
-					"isActive": false
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAFVUGLE2U9TXt8=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "IMailService",
-					"visibility": "public",
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAFVUGNlQ0+bTds=",
-							"_parent": {
-								"$ref": "AAAAAAFVUGLE2U9TXt8="
-							},
-							"name": "send",
-							"visibility": "public",
-							"isStatic": false,
-							"isLeaf": false,
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFVUGOuM0/D/Xs=",
-									"_parent": {
-										"$ref": "AAAAAAFVUGNlQ0+bTds="
-									},
-									"name": "IEmail",
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": "",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "in"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFVUGOuM0/EYfc=",
-									"_parent": {
-										"$ref": "AAAAAAFVUGNlQ0+bTds="
-									},
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": "SendResult",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "return"
-								}
-							],
-							"concurrency": "sequential",
-							"isQuery": false,
-							"isAbstract": false
-						}
-					],
-					"isAbstract": false,
-					"isFinalSpecialization": false,
-					"isLeaf": false,
-					"isActive": false
-				},
-				{
 					"_type": "UMLPackage",
 					"_id": "AAAAAAFVXYWl5YQtXD0=",
 					"_parent": {
@@ -24848,6 +24757,29 @@
 									},
 									"showProperty": true,
 									"showType": true
+								},
+								{
+									"_type": "UMLNoteView",
+									"_id": "AAAAAAFVXpedec5mnHc=",
+									"_parent": {
+										"$ref": "AAAAAAFVVJbrUF1i76Q="
+									},
+									"visible": true,
+									"enabled": true,
+									"lineColor": "#000000",
+									"fillColor": "#ffeaad",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"showShadow": true,
+									"containerChangeable": false,
+									"containerExtending": false,
+									"left": 592,
+									"top": 336,
+									"width": 209,
+									"height": 65,
+									"autoResize": false,
+									"text": "MailManager is a singleton which bootstraps the IMailHandlers dynamically at runtime thanks to a config file.  ",
+									"wordWrap": true
 								}
 							],
 							"showSequenceNumber": true,
@@ -25634,6 +25566,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25651,6 +25584,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25668,6 +25602,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25685,6 +25620,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25702,6 +25638,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25719,6 +25656,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25736,6 +25674,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25753,6 +25692,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25770,6 +25710,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -25787,6 +25728,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
